@@ -42,6 +42,7 @@ for hotel_name in hotel_names:
     ids = []
     ratings = []
     log = []
+    islocal = []
     for url in urls:
         response = get(url)
         html_soup = BeautifulSoup(response.text, 'html.parser')
@@ -53,11 +54,14 @@ for hotel_name in hotel_names:
                 names.append(review.find('div', class_="social-member-event-MemberEventOnObjectBlock__event_type--3njyv").a.text)
                 ids.append(review.find('div', class_="social-member-event-MemberEventOnObjectBlock__event_type--3njyv").a['href'])
                 ratings.append(review.find('div', class_="location-review-review-list-parts-RatingLine__bubbles--GcJvM").span['class'][1].split("_")[1])
+                try:
+                    islocal.append(review.find('span', class_="social-member-common-MemberHometown__hometown--3kM9S").text)
+                except:
+                    islocal.append("")
             except:
                 continue
-
     city = [CITY]*(len(contents))
-    df=pd.DataFrame({"location":city,"review":contents,"name":names,"user_profile":ids,"rating":ratings})
+    df=pd.DataFrame({"location":city,"review":contents,"name":names,"user_profile":ids,"userloc":islocal,"rating":ratings})
     df.to_csv("../dataset/{}/{}.csv".format(CITY,BASE_URL[se_loc+1:-5]), index=False)
 # logs=pd.DataFrame(log)
 # logs.to_csv("logs/logs{}.csv".format(CITY), index=False)

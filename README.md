@@ -7,6 +7,7 @@
 * [Dataset Creation](#dataset-creation)
   * Scrap Hotels
   * Scrap Reviews
+* [Sample Dataset](#sample-dataset)
 
 ## Installation
 
@@ -17,11 +18,7 @@ pip install -r requirements.txt
 
 ## Folder Structure
 
-<center>
-
 ![img](docs/img/folder_str.png)
-
-</center>
 
 ## Dataset Creation
 
@@ -41,3 +38,12 @@ Example:
 cd scripts
 python get_reviews.py <LOCATION_NAME>
 ```
+
+## Sample Dataset
+
+* Preprocessed Dataset
+
+|  location | review | name | user_profile | userloc | rating |
+|  -- | -- | -- | -- | -- | -- |
+| haridwar | Stayed for 2 nights with family. It’s an excellent place to get the feel of Ganga. The hotel... | Randeep | /Profile/Randeepbora | New Delhi, India | 40 |
+| haridwar | Loved our stay, amazing location right by the bank of the Ganges (with the facility of a private Ghat)... | Shayari Banerjee |/Profile/shayarib3499 |  NA | 50 |
