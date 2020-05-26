@@ -20,7 +20,9 @@ pip install -r requirements.txt
 <center>
 
 ![img](docs/img/folder_str.png)
+
 </center>
+
 ## Dataset Creation
 
 * Scrap Hotels for a particular Location(city)
