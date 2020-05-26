@@ -3,6 +3,7 @@
 ## Table of Contents
 
 * [Installation](#installation)
+* [Folder Structure](#folder-structure)
 * [Dataset Creation](#dataset-creation)
   * Scrap Hotels
   * Scrap Reviews
@@ -14,6 +15,12 @@ git clone https://github.com/projectb33/IBM318.git
 pip install -r requirements.txt
 ```
 
+## Folder Structure
+
+<center>
+
+![img](docs/img/folder_str.png)
+</center>
 ## Dataset Creation
 
 * Scrap Hotels for a particular Location(city)
