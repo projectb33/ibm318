@@ -11,13 +11,20 @@ CITY = sys.argv[1]
 with open("../dataset/{}/hotels.txt".format(CITY)) as FileHandle:
     hotel_names = FileHandle.readlines()
 
-for hotel_name in hotel_names:
+for c, hotel_name in enumerate(hotel_names):
     BASE_URL='https://www.tripadvisor.in{}'.format(hotel_name[:-1])
     
     response = get(BASE_URL)
     html_soup = BeautifulSoup(response.text, 'html.parser')
-    total_reviews = html_soup.find_all('span', class_ = 'hotels-community-content-common-TabAboveHeader__tabCount--26Tct')[0].text
-
+    
+    try:
+        total_reviews = html_soup.find_all('span', class_ = 'hotels-community-content-common-TabAboveHeader__tabCount--26Tct')[0].text
+    except:
+        print(c, ">>> -------------------------")
+        print(BASE_URL, "has 0 reviews")
+        print("-------------------------")
+        continue	
+    
     urls=[]
 
     _iter = 0
@@ -28,8 +35,9 @@ for hotel_name in hotel_names:
                 break
             _iter+=1
     bus = [BASE_URL[:se_loc]+"-or",BASE_URL[se_loc:]] #base url splits
-    print("-------------------------")
+    print(c, ">>> -------------------------")
     print("Collecting review for",BASE_URL[se_loc+1:-5])
+    print("Total Reviews are",total_reviews)
     print("-------------------------")
     for i in range(0,int(total_reviews),5):
         if i == 0:

@@ -19,7 +19,11 @@ if not os.path.exists(FOLDER_LOC):
 response = get(BASE_URL)
 html_soup = BeautifulSoup(response.text, 'html.parser')
 total_hotels = html_soup.find_all('span', class_ = 'hotels-sort-filter-header-sort-filter-header__highlight--14Kyo')[0].text
-total_hotels = int(total_hotels.split(" ")[0])
+try:
+    total_hotels = int(total_hotels.split(" ")[2])
+except:
+    total_hotels = int(total_hotels.split(" ")[0])
+			
 
 #create a url format string
 _iter = 0
